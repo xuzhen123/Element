@@ -17,8 +17,6 @@
   }
 </script>
 
-<style scoped>
-  body{
-    margin: 0;
-  } 
+<style>
+  @import "assets/css/common.css";
 </style>

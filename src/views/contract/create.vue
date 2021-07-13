@@ -18,7 +18,7 @@
 </template>
 
 <script>
-      import httpRequest  from '../../network/httpRequest'
+      import httpRequest  from 'network/httpRequest'
 
       export default {
         data () {
@@ -54,7 +54,7 @@
                 data: this.createForm
               }).then((response) => {
                 this.$message({                
-                  message: `合同 #${response.data.data} 创建成功`,
+                  message: `合同 #${response} 创建成功`,
                   type: 'success'
                 })
 
@@ -72,18 +72,3 @@
       }
 </script>
 
-<style scoped>
-  .xz-form{
-    margin: 0 auto;
-    max-width: 700px;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 5px;
-    box-shadow: 0 1px 8px;
-  }
-  .tips{
-    margin-top:5px;
-    line-height: 1.5;
-    color: #c0c4cc;
-  }
-</style>

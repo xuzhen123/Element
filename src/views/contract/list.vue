@@ -3,7 +3,7 @@
         <el-collapse accordion slot="filter">
             <el-collapse-item>
                 <template slot="title">查询<i class="el-icon-search" style="padding-left: 5px;"></i></template>
-                <el-form label-width="80px">
+                <el-form label-width="80px" id="filter">
                     <el-form-item label="合同编号">
                         <el-input placeholder="请输入合同编号" v-model="filter.contractId" clearable></el-input>
                     </el-form-item>
@@ -29,10 +29,15 @@
             <el-table-column prop="id" label="编号" sortable></el-table-column>
             <el-table-column prop="name" label="名称"></el-table-column>
             <el-table-column prop="refNo" label="参考号"></el-table-column>
-            <el-table-column prop="dateCreated" label="创建时间" sortable></el-table-column>
+            <el-table-column prop="dateCreated" label="创建时间" sortable>
+                <template slot-scope="scope">
+                    {{toDateTime(scope.row.dateCreated)}}
+                </template>
+            </el-table-column>
             <el-table-column label="操作">
                <template slot-scope="scope">
-                <el-button type="primary" size="small" round>编辑</el-button>         
+                <el-link icon="el-icon-edit"  @click="onLink(`/contract/edit/${scope.row.id}`)"  style="margin-right:8px">编辑</el-link>
+                <!-- <el-button type="primary" icon="el-icon-edit" @click.native.prevent="onLink(`/contract/edit/${scope.row.id}`)" circle style="margin-right:8px"></el-button> -->
                 <el-dropdown>
                     <el-button type="success" size="small" round>其它<i class="el-icon-arrow-down el-icon--right"></i></el-button>                   
                         <el-dropdown-menu slot="dropdown">
@@ -49,7 +54,8 @@
 
 <script>
     import XzCommonBody from 'components/xzCommonBody/XzCommonBody'
-    import httpRequest  from '../../network/httpRequest'
+    import {toDateTime} from 'common/format';
+    import httpRequest  from 'network/httpRequest'
 
     export default {
         name: 'Contract',
@@ -78,6 +84,7 @@
             }
         },
         methods:{
+            toDateTime: toDateTime,
             loadData(){
                 this.loading = true;  
                 httpRequest({
@@ -86,8 +93,7 @@
                     params: this.filter
                 }).then(response=> {
                     this.loading = false;
-                    this.pageList = response.data.data;
-                    console.log(this.pageList);
+                    this.pageList = response;
                     this.filter.pageIndex = this.pageList.pageIndex;
                     this.filter.pageSize = this.pageList.pageSize;
                 })   
@@ -95,31 +101,12 @@
             onSubmit(){
                 this.loadData()
               },
-
+            onLink(route) {
+                this.$router.push(route);
+            },
         },
         created(){
             this.loadData()
         }
     }
 </script>
-
-<style>
-    .el-collapse{
-       margin-bottom: 10px;
-    }
-    .el-collapse-item__header{
-        padding-left: 12px;
-    }
-    .el-form{
-        /* 1.子元素水平铺开display: flex */
-        /* 2.子元素平均分割flex:1 */
-        /* 3.自动换行显示 flex-wrap:wrap */
-        display: flex; 
-        flex: 1;
-        flex-wrap: wrap;
-    }
-   .el-form>.el-form-item>.el-input__inner{
-        width: 220px;
-    }
-
-</style>

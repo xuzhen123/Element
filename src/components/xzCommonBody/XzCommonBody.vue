@@ -11,7 +11,9 @@
                                 :page-count="pageList.totalPageCount" 
                                 :pager-count="5" 
                                 :page-size="pageList.pageSize"
-                                :current-page="pageList.pageIndex">
+                                :current-page="pageList.pageIndex"
+                                @size-change="sizeChange"
+                                @current-change="currentChange">
             
         </el-pagination>
     </div>
@@ -22,6 +24,10 @@
     export default {
         name: 'XzCommonBody',
         props: {
+            filter: {
+                type: Object,
+                required: true
+            },
             pageList: {
                 type: Object,
                 required: true,
@@ -46,7 +52,18 @@
             return{
                 //tableData:null
             }
-        }
+        },
+        methods:{
+            sizeChange(i){
+              this.filter.pageIndex = 1;
+              this.filter.pageSize = i;
+              this.dataLoad();
+            },
+            currentChange(i){
+              this.filter.pageIndex = i;
+              this.dataLoad();
+            }
+      }
     }
 </script>
 

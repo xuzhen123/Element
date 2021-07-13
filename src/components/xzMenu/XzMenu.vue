@@ -12,11 +12,11 @@
           </el-submenu>
           <el-submenu index="1-4">
             <template slot="title"><i class="el-icon-school"></i> 商户</template>
-            <el-menu-item index="1-5">创建</el-menu-item>
+            <el-menu-item index="/merchant/create">创建</el-menu-item>
             <el-menu-item index="/merchant/list">列表</el-menu-item>
-            <el-menu-item index="1-7">用户</el-menu-item>
+            <el-menu-item index="/merchant/user">用户</el-menu-item>
           </el-submenu>     
-          <el-menu-item index="1-8"><i class="el-icon-monitor"></i> 终端</el-menu-item>
+          <el-menu-item index="/terminal/list"><i class="el-icon-monitor"></i> 终端</el-menu-item>
         </el-submenu>
         <el-submenu index="2">
           <template slot="title"><i class="el-icon-tickets"></i><span>交易管理</span> </template>
