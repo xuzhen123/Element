@@ -3,10 +3,10 @@
       <xz-menu></xz-menu>
       <el-container direction="vertical">
         <el-header>
-            <el-dropdown>
+            <el-dropdown @command="handleCommand">
               <i class="el-icon-setting" style="margin-right: 5px"></i>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>修改密码</el-dropdown-item>
+                <el-dropdown-item :command="userId">修改密码</el-dropdown-item>
                 <el-dropdown-item>退出登录</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
@@ -31,8 +31,14 @@
         },
         data(){
           return{
+            userId: store.state.user.id,
             userName: store.state.user.userName
           }
         },
+        methods:{
+          handleCommand(command){
+            this.$router.push(`/manageruser/updatePassword/${command}`)
+          }
+        }
     }
 </script>

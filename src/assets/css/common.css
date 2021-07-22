@@ -39,6 +39,7 @@ line-height: 60px;
     border-radius: 5px;
     box-shadow: 0 1px 8px;
   }
+
   .tips{
     margin-top:5px;
     line-height: 1.5;
@@ -59,7 +60,7 @@ line-height: 60px;
   font-size: 0;
 }
 .xz-table-expand label {
-  width: 90px;
+  width: 130px;
   color: #99a9bf;
 }
 .xz-table-expand .el-form-item {

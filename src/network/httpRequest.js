@@ -1,5 +1,5 @@
 import axios from 'axios'
-import store from '../store/index'
+import store from 'store/index'
 import { Message, MessageBox } from 'element-ui';
 
  function httpRequest(config){
@@ -9,7 +9,6 @@ import { Message, MessageBox } from 'element-ui';
        headers: {
         'Accept-Language': navigator.language || 'en-US',
         'Content-Type': 'application/json;charset=utf-8',
-        'Reqest-From': 'freepay.manager',
      },
    }) 
 
@@ -53,6 +52,7 @@ import { Message, MessageBox } from 'element-ui';
 
         return Promise.reject(error);
    })
+
 
    return instance(config)
 }

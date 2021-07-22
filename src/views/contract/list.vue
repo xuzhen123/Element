@@ -26,18 +26,17 @@
               </el-collapse-item>
           </el-collapse>
           <el-table slot="xz-table" :data="pageList.items">
-            <el-table-column prop="id" label="编号" sortable></el-table-column>
-            <el-table-column prop="name" label="名称"></el-table-column>
-            <el-table-column prop="refNo" label="参考号"></el-table-column>
-            <el-table-column prop="dateCreated" label="创建时间" sortable>
+            <el-table-column prop="id" label="编号" align="center" sortable></el-table-column>
+            <el-table-column prop="name" label="名称" align="center"></el-table-column>
+            <el-table-column prop="refNo" label="参考号" align="center"></el-table-column>
+            <el-table-column prop="dateCreated" label="创建时间" align="center" sortable>
                 <template slot-scope="scope">
                     {{toDateTime(scope.row.dateCreated)}}
                 </template>
             </el-table-column>
-            <el-table-column label="操作">
+            <el-table-column label="操作" align="center">
                <template slot-scope="scope">
                 <el-link icon="el-icon-edit"  @click="onLink(`/contract/edit/${scope.row.id}`)"  style="margin-right:8px">编辑</el-link>
-                <!-- <el-button type="primary" icon="el-icon-edit" @click.native.prevent="onLink(`/contract/edit/${scope.row.id}`)" circle style="margin-right:8px"></el-button> -->
                 <el-dropdown>
                     <el-button type="success" size="small" round>其它<i class="el-icon-arrow-down el-icon--right"></i></el-button>                   
                         <el-dropdown-menu slot="dropdown">

@@ -14,7 +14,7 @@
             <template slot="title"><i class="el-icon-school"></i> 商户</template>
             <el-menu-item index="/merchant/create">创建</el-menu-item>
             <el-menu-item index="/merchant/list">列表</el-menu-item>
-            <el-menu-item index="/merchant/user">用户</el-menu-item>
+            <el-menu-item index="/user/list">用户</el-menu-item>
           </el-submenu>     
           <el-menu-item index="/terminal/list"><i class="el-icon-monitor"></i> 终端</el-menu-item>
         </el-submenu>
@@ -128,18 +128,18 @@
           <template slot="title"><i class="el-icon-setting"></i><span>系统管理</span></template>
           <el-submenu index="8-1">
             <template slot="title"><i class="el-icon-chat-line-square"></i> 公告</template>
-            <el-menu-item index="8-2">创建</el-menu-item>
-            <el-menu-item index="8-3">列表</el-menu-item>
+            <el-menu-item index="/notice/create">创建</el-menu-item>
+            <el-menu-item index="/notice/list">列表</el-menu-item>
           </el-submenu>
           <el-submenu index="8-4">
             <template slot="title"><i class="el-icon-user"></i> 员工</template>
-            <el-menu-item index="8-5">创建</el-menu-item>
-            <el-menu-item index="8-6">列表</el-menu-item>
+            <el-menu-item index="/manageruser/create">创建</el-menu-item>
+            <el-menu-item index="/manageruser/list">列表</el-menu-item>
           </el-submenu>
           <el-submenu index="8-7">
             <template slot="title"><i class="el-icon-medal"></i> 角色</template>
-            <el-menu-item index="8-8">创建</el-menu-item>
-            <el-menu-item index="8-9">列表</el-menu-item>
+            <el-menu-item index="/role/create">创建</el-menu-item>
+            <el-menu-item index="/role/list">列表</el-menu-item>
           </el-submenu>
         </el-submenu>
       </el-menu>

@@ -130,7 +130,7 @@
           <template slot-scope="scope">
             <el-dropdown @command="onStatus">
                 <el-button type="text">
-                    <el-tag :type="scope.row.status">{{getText(statuses,scope.row.status)}}</el-tag><i class="el-icon-arrow-down el-icon--right"></i>
+                    <el-tag>{{getText(statuses,scope.row.status)}}</el-tag><i class="el-icon-arrow-down el-icon--right"></i>
                 </el-button>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item v-for="status in statuses" :command="{merchantId:scope.row.id,status:status.value}" :key="status.value">
@@ -149,7 +149,7 @@
         </el-table-column>
         <el-table-column label="操作" align="center">
            <template slot-scope="scope">
-            <el-button type="text" size="small">编辑</el-button>
+            <el-button type="text" size="small" @click="onLink(`/merchant/edit/${scope.row.id}`)">编辑</el-button>
             <el-button type="text" size="small">配置</el-button>
             <el-dropdown>
                 <el-button type="success" size="small" round>查看<i class="el-icon-arrow-down el-icon--right"></i></el-button>                   
@@ -220,7 +220,6 @@
           methods: 'get',
           params: this.filter
         }).then(response => {
-          console.log(response)
           this.loading = false;
           this.pageList = response;
           this.filter.pageIndex = this.pageList.pageIndex;
@@ -230,8 +229,24 @@
       onSubmit(){
         this.loadData();
       },
-      onStatus(){
+      onStatus(command){
+        httpRequest({
+          url: `/merchant/set/${command.merchantId}`,
+          method: 'put',
+          data: String(command.status)
+        }).then(response => {
+          if(response){
+            this.$message({
+              message: `商户 ${command.merchantId} 状态变更成功`,
+              type: 'success'
+            })
 
+            this.loadData();
+          }
+        })
+      },
+      onLink(link){
+        this.$router.push(link)
       }
     },
     created(){

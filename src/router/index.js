@@ -10,8 +10,19 @@ Vue.use(Router)
  const Merchant = ()=> import('views/merchant/list')
  const MerchantCreate = ()=> import('views/merchant/create')
  const MerchantEdit = ()=> import('views/merchant/edit')
- const MerchantUser = ()=> import('views/merchant/user')
+ const MerchantUser = ()=> import('views/merchantuser/list')
  const Terminal = ()=> import('views/terminal/list')
+ const TerminalEdit = ()=> import('views/terminal/edit')
+ const MerchantUserChangePassword = ()=> import('views/user/changePassword')
+ const Notice = ()=> import('views/notice/list')
+ const NoticeCreate = ()=> import('views/notice/create')
+ const ManagerUser = ()=> import('views/manageruser/list')
+ const ManagerUserUpdatePassword = ()=> import('views/manageruser/updatePassword')
+ const ManagerUserCreate = ()=> import('views/manageruser/create')
+ const ManagerUserMfa = ()=> import('views/manageruser/mfa')
+ const Role = ()=> import('views/role/list')
+ const RoleCreate = ()=> import('views/role/create')
+ 
 
 
  const router = new Router({
@@ -63,17 +74,24 @@ Vue.use(Router)
             }
         },
         {
-            path:'/merchant/edit:id(\\d+)',
+            path:'/merchant/edit/:id(\\d+)',
             component: MerchantEdit,
             meta:{
                 title:'商户-编辑'
             }
         },
         {
-            path:'/merchant/user',
+            path:'/user/list',
             component: MerchantUser,
             meta:{
-                title:'商户-用户'
+                title:'用户-列表'
+            }
+        },
+        {
+            path:'/user/:mid(\\d+)/:uid(\\d+)/changePassword',
+            component: MerchantUserChangePassword,
+            meta:{
+                title:'用户-修改密码'
             }
         },
         {
@@ -81,6 +99,69 @@ Vue.use(Router)
             component: Terminal,
             meta:{
                 title:'终端-列表'
+            }
+        },
+        {
+            path:'/terminal/edit/:id(\\d+)',
+            component: TerminalEdit,
+            meta:{
+                title:'终端-编辑'
+            }
+        },
+        {
+            path:'/notice/list',
+            component: Notice,
+            meta:{
+                title:'公告-列表'
+            }
+        },
+        {
+            path:'/notice/create',
+            component: NoticeCreate,
+            meta:{
+                title:'公告-创建'
+            }
+        },
+        {
+            path:'/manageruser/list',
+            component: ManagerUser,
+            meta:{
+                title:'员工用户-列表'
+            }
+        },
+        {
+            path:'/manageruser/updatePassword/:id(\\d+)',
+            component: ManagerUserUpdatePassword,
+            meta:{
+                title:'员工用户-修改密码'
+            }
+        },
+        {
+            path:'/manageruser/create',
+            component: ManagerUserCreate,
+            meta:{
+                title:'员工用户-创建'
+            }
+        },
+        {
+            path:'/manageruser/mfa',
+            component: ManagerUserMfa,
+            meta:{
+                title:'员工用户-MFA'
+            }
+        },
+        {
+            path:'/role/list',
+            component: Role,
+            meta:{
+                title:'角色-列表'
+            }
+        },
+        {
+            path:'/role/create',
+            component: RoleCreate,
+            meta:{
+                title:'角色-创建'
             }
         },
      ],
