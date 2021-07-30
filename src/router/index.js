@@ -14,6 +14,14 @@ Vue.use(Router)
  const Terminal = ()=> import('views/terminal/list')
  const TerminalEdit = ()=> import('views/terminal/edit')
  const MerchantUserChangePassword = ()=> import('views/user/changePassword')
+ const OrderTest = ()=> import('views/order/test')
+ const Order = ()=> import('views/order/list')
+ const Refund = ()=> import('views/refund/list')
+ const RefundAudit = ()=> import('views/refund/audit')
+ const CarrierList = ()=> import('views/carrier/list')
+ const CarrierCreate = ()=> import('views/carrier/create')
+ const WaybillList = ()=> import('views/waybill/list')
+ const WaybillUpload = ()=> import('views/waybill/upload')
  const Notice = ()=> import('views/notice/list')
  const NoticeCreate = ()=> import('views/notice/create')
  const ManagerUser = ()=> import('views/manageruser/list')
@@ -106,6 +114,62 @@ Vue.use(Router)
             component: TerminalEdit,
             meta:{
                 title:'终端-编辑'
+            }
+        },
+        {
+            path:'/order/test',
+            component: OrderTest,
+            meta:{
+                title:'订单-测试'
+            }
+        },
+        {
+            path:'/order/list',
+            component: Order,
+            meta:{
+                title:'订单-列表'
+            }
+        },
+        {
+            path:'/refund/list',
+            component: Refund,
+            meta:{
+                title:'退款-列表'
+            }
+        },
+        {
+            path:'/refund/audit/:id(\\d+)',
+            component: RefundAudit,
+            meta:{
+                title:'退款-审核'
+            }
+        },
+        {
+            path:'/carrier/list',
+            component: CarrierList,
+            meta:{
+                title:'承运商-列表'
+            }
+        },
+        {
+            path:'/carrier/create',
+            component: CarrierCreate,
+            meta:{
+                title:'承运商-创建'
+            }
+        },
+        {
+            path:'/waybill/list',
+            component: WaybillList,
+            meta:{
+                title:'运单-列表'
+            }
+        },
+        {
+            path:'/waybill/upload',
+            component: WaybillUpload,
+            meta:{
+                title:'运单-上传'
             }
         },
         {

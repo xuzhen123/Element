@@ -22,22 +22,22 @@
           <template slot="title"><i class="el-icon-tickets"></i><span>交易管理</span> </template>
           <el-submenu index="2-1">
             <template slot="title"><i class="el-icon-document"></i> 订单</template>
-            <el-menu-item index="2-2">测试</el-menu-item>
-            <el-menu-item index="2-3">正式</el-menu-item>
+            <el-menu-item index="/order/test">测试</el-menu-item>
+            <el-menu-item index="/order/list">正式</el-menu-item>
           </el-submenu>
-          <el-menu-item index="2-4"><i class="el-icon-document-remove"></i> 退款</el-menu-item>
+          <el-menu-item index="/refund/list"><i class="el-icon-document-remove"></i> 退款</el-menu-item>
         </el-submenu>
         <el-submenu index="3">
           <template slot="title"><i class="el-icon-guide"></i><span>发货管理</span> </template>
           <el-submenu index="3-1">
             <template slot="title"><i class="el-icon-truck"></i> 承运商</template>
-            <el-menu-item index="3-2">创建</el-menu-item>
-            <el-menu-item index="3-3">列表</el-menu-item>
+            <el-menu-item index="/carrier/create">创建</el-menu-item>
+            <el-menu-item index="/carrier/list">列表</el-menu-item>
           </el-submenu>
           <el-submenu index="3-4">
             <template slot="title"><i class="el-icon-notebook-2"></i> 运单</template>
-            <el-menu-item index="3-5">上传</el-menu-item>
-            <el-menu-item index="3-6">列表</el-menu-item>
+            <el-menu-item index="/waybill/upload">上传</el-menu-item>
+            <el-menu-item index="/waybill/list">列表</el-menu-item>
           </el-submenu>
         </el-submenu>
         <el-submenu index="4">
